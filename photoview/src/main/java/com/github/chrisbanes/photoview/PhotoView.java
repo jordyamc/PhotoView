@@ -190,6 +190,10 @@ public class PhotoView extends AppCompatImageView {
         attacher.setAllowParentInterceptOnEdge(allow);
     }
 
+    public void setMidScaleEnabled(boolean isEnabled){
+        attacher.setMidScaleEnabled(isEnabled);
+    }
+
     public void setMinimumScale(float minimumScale) {
         attacher.setMinimumScale(minimumScale);
     }

@@ -59,6 +59,7 @@ public class PhotoViewAttacher implements View.OnTouchListener,
     private float mMinScale = DEFAULT_MIN_SCALE;
     private float mMidScale = DEFAULT_MID_SCALE;
     private float mMaxScale = DEFAULT_MAX_SCALE;
+    private boolean isMediumScaleEnabled = true;
 
     private boolean mAllowParentInterceptOnEdge = true;
     private boolean mBlockParentIntercept = false;
@@ -227,7 +228,7 @@ public class PhotoViewAttacher implements View.OnTouchListener,
                     float scale = getScale();
                     float x = ev.getX();
                     float y = ev.getY();
-                    if (scale < getMediumScale()) {
+                    if (scale < getMediumScale() && isMediumScaleEnabled) {
                         setScale(getMediumScale(), x, y, true);
                     } else if (scale >= getMediumScale() && scale < getMaximumScale()) {
                         setScale(getMaximumScale(), x, y, true);
@@ -386,6 +387,10 @@ public class PhotoViewAttacher implements View.OnTouchListener,
 
     public void setAllowParentInterceptOnEdge(boolean allow) {
         mAllowParentInterceptOnEdge = allow;
+    }
+
+    public void setMidScaleEnabled(boolean isEnabled){
+        isMediumScaleEnabled = isEnabled;
     }
 
     public void setMinimumScale(float minimumScale) {
